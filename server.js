@@ -72,7 +72,7 @@ app.post(
       response_message = `Element found in index ${index}`;
     }
     res.json({
-      messages: [{ content: response_message }, { to_number }],
+      messages: [{ content: response_message, to_number }],
     });
     res.status(200).end();
   }
