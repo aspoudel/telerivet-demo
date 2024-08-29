@@ -33,6 +33,7 @@ app.post(
     arr = [];
     const arrElements = req.body.vars.array_elements;
     if (size != arrElements.length) {
+      res.set("Content-Type", "application/json");
       res.json({
         messages: [{ content: "Array Size Mismatched" }],
       });
@@ -62,6 +63,7 @@ app.post(
       }
     }
     let response_message = "";
+    res.set("Content-Type", "application/json");
     if (index == -1) {
       response_message = "Element not found in the array.";
     } else {
