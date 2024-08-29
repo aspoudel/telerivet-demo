@@ -42,7 +42,7 @@ app.post(
   "/searchElement",
   bodyParser.urlencoded({ extended: true }),
   (req, res) => {
-    console.log(response.body);
+    console.log(req.body);
     console.log("Arr size: ", size);
     console.log("Arr: ", arr);
     const searchElement = parseInt(req.body.vars.search_element);
