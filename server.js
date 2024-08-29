@@ -32,7 +32,7 @@ app.post(
   (req, res) => {
     arr = [];
     const arrElements = req.body.vars.array_elements;
-    if (size != array_elements.length) {
+    if (size != arrElements.length) {
       res.json({
         messages: [{ content: "Array Size Mismatched" }],
       });
