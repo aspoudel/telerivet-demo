@@ -63,6 +63,7 @@ app.post(
       }
     }
     let response_message = "";
+    const to_number = req.body.to_number;
     res.set("Content-Type", "application/json");
     if (index == -1) {
       response_message = "Element not found in the array.";
@@ -70,7 +71,7 @@ app.post(
       response_message = `Element found in index ${index}`;
     }
     res.json({
-      messages: [{ content: response_message }],
+      messages: [{ content: response_message }, { to_number }],
     });
     res.status(200).end();
   }
