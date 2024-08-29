@@ -8,7 +8,7 @@ const PORT = 3000;
 const app = express();
 
 app.get("/", (req, res) => {
-  console.log("Get Home Success");
+  res.send("GET Home Success");
 });
 
 app.post("/", (req, res) => {
