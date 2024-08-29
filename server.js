@@ -30,7 +30,14 @@ app.post(
   "/setArrayElements",
   bodyParser.urlencoded({ extended: true }),
   (req, res) => {
+    arr = [];
     const arrElements = req.body.vars.array_elements;
+    if (size != array_elements.length) {
+      res.json({
+        messages: [{ content: "Array Size Mismatched" }],
+      });
+      res.status(403).end();
+    }
     for (let i = 0; i < arrElements.length; i++) {
       arr.push(parseInt(arrElements[i], 10));
     }
