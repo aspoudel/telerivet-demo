@@ -64,6 +64,7 @@ app.post(
     }
     let response_message = "";
     const to_number = req.body.to_number;
+    console.log(to_number, typeof to_number);
     res.set("Content-Type", "application/json");
     if (index == -1) {
       response_message = "Element not found in the array.";
