@@ -14,6 +14,8 @@ app.get("/", (req, res) => {
 const WEBHOOK_SECRET = "Secret01";
 
 app.post("/", bodyParser.urlencoded({ extended: true }), (req, res) => {
+  console.log("Here");
+  console.log(req.body);
   const secret = req.body.secret;
   if (secret !== WEBHOOK_SECRET) {
     res.status(403).end();
