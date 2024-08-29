@@ -51,10 +51,7 @@ app.post(
   bodyParser.urlencoded({ extended: true }),
   (req, res) => {
     console.log(req.body);
-    console.log("Arr size: ", size);
-    console.log("Arr: ", arr);
     const searchElement = parseInt(req.body.vars.search_element);
-    console.log("Search Element: " + searchElement);
     let index = -1;
     for (let i = 0; i < arr.length; i++) {
       if (arr[i] == searchElement) {
@@ -64,7 +61,6 @@ app.post(
     }
     let response_message = "";
     const to_number = req.body.to_number;
-    console.log(to_number, typeof to_number);
     res.set("Content-Type", "application/json");
     if (index == -1) {
       response_message = "Element not found in the array.";
@@ -88,7 +84,6 @@ app.post("/", bodyParser.urlencoded({ extended: true }), (req, res) => {
     let content = req.body.content;
     let from_number = req.body.from_number;
     let phone_id = req.body.phone_id;
-    console.log(content, from_number, phone_id);
     res.json({
       messages: [{ content: "Thanks for your message!" }],
     });
