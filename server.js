@@ -21,7 +21,6 @@ app.post(
   bodyParser.urlencoded({ extended: true }),
   (req, res) => {
     const arrSize = req.body.vars.array_size;
-    console.log("Array Size", arrSize);
     size = arrSize;
     res.status(200).end();
   }
@@ -32,6 +31,12 @@ app.post(
   bodyParser.urlencoded({ extended: true }),
   (req, res) => {
     console.log(req.body);
+    const arrElements = toString(req.body.vars.array_elements);
+    console.log("Array Size", size);
+    for (let i = 0; i < arrElements.length; i++) {
+      arr.push(parseInt(arrElements[i], 10));
+    }
+    console.log("Array: ", arr);
     res.status(200).end();
   }
 );
