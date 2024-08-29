@@ -20,11 +20,19 @@ app.post(
   "/setArraySize",
   bodyParser.urlencoded({ extended: true }),
   (req, res) => {
-    console.log("Here now");
-    console.log(req.body);
-    const arrSize = req.body.array_size;
+    const arrSize = req.body.vars.array_size;
     console.log("Array Size", arrSize);
     size = arrSize;
+    res.status(200).end();
+  }
+);
+
+app.post(
+  "/setArrayElements",
+  bodyParser.urlencoded({ extended: true }),
+  (req, res) => {
+    console.log(req.body);
+    res.status(200).end();
   }
 );
 
