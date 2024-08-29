@@ -30,13 +30,39 @@ app.post(
   "/setArrayElements",
   bodyParser.urlencoded({ extended: true }),
   (req, res) => {
-    console.log(req.body);
     const arrElements = req.body.vars.array_elements;
-    console.log("Array Size", size);
     for (let i = 0; i < arrElements.length; i++) {
       arr.push(parseInt(arrElements[i], 10));
     }
-    console.log("Array: ", arr);
+    res.status(200).end();
+  }
+);
+
+app.post(
+  "/searchElement",
+  bodyParser.urlencoded({ extended: true }),
+  (req, res) => {
+    console.log(response.body);
+    console.log("Arr size: ", size);
+    console.log("Arr: ", arr);
+    const searchElement = parseInt(req.body.vars.search_element);
+    console.log("Search Element: " + searchElement);
+    let index = -1;
+    for (let i = 0; i < arr.length; i++) {
+      if (arr[i] == searchElement) {
+        index = i;
+        break;
+      }
+    }
+    let response_message = "";
+    if (index == -1) {
+      response_message = "Element not found in the array.";
+    } else {
+      response_message = `Element found in index ${index}`;
+    }
+    res.json({
+      messages: [{ content: response_message }],
+    });
     res.status(200).end();
   }
 );
