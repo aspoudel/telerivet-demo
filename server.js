@@ -13,15 +13,28 @@ app.get("/", (req, res) => {
 
 const WEBHOOK_SECRET = "Secret01";
 
+let arr = [];
+let size = 0;
+
+app.post(
+  "/setArraySize",
+  bodyParser.urlencoded({ extended: true }),
+  (req, res) => {
+    console.log("Here now");
+    console.log(req.body);
+    const arrSize = req.body.array_size;
+    console.log("Array Size", arrSize);
+    size = arrSize;
+  }
+);
+
 app.post("/", bodyParser.urlencoded({ extended: true }), (req, res) => {
-  console.log("Here");
-  console.log(req.body);
   const secret = req.body.secret;
   if (secret !== WEBHOOK_SECRET) {
     res.status(403).end();
     return;
   }
-  if (req.body.event == "incoming message") {
+  if (req.body.event == "ivr_callback") {
     let content = req.body.content;
     let from_number = req.body.from_number;
     let phone_id = req.body.phone_id;
